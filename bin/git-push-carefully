@@ -9,14 +9,16 @@ if [ -z ${__remote} -o -z ${__branch} ]; then
   exit 1
 fi
 
+__log() {
+  if [ ${VERBOSE:-} ]; then
+    echo $@
+  fi
+}
+
 __exec() {
-  if [ ${VERBOSE:-} ]; then
-    echo '[EXEC]' $@
-  fi
+  __log '[EXEC]' $@
   $@
-  if [ ${VERBOSE:-} ]; then
-    echo '[DONE]' $@
-  fi
+  __log '[DONE]' $@
 }
 
 __error() {
