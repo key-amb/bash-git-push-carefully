@@ -1,5 +1,12 @@
 #!/bin/bash
 
+version="0.1.0"
+
+if [[ ${1:-} = "-v" || ${1:-} = "--version" ]]; then
+  echo $version
+  exit 0
+fi
+
 __program=$(basename $0)
 __remote=${1:-}
 __branch=${2:-}
